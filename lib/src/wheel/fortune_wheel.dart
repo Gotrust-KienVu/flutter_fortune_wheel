@@ -135,6 +135,7 @@ class FortuneWheel extends HookWidget implements FortuneWidget {
   final VoidCallback? onFling;
 
   /// The position to which the wheel aligns the selected value.
+  final Widget scan;
   ///
   /// Defaults to [Alignment.topCenter]
   final Alignment alignment;
@@ -166,6 +167,7 @@ class FortuneWheel extends HookWidget implements FortuneWidget {
     this.onAnimationEnd,
     this.alignment = Alignment.topCenter,
     PanPhysics? physics,
+    required this.scan,
     this.onFling,
   })  : physics = physics ?? CircularPanPhysics(),
         assert(items.length > 1),
@@ -254,10 +256,10 @@ class FortuneWheel extends HookWidget implements FortuneWidget {
                 });
               },
             ),
-            Container(
-              height:30,
-              color:Colors.red
-            )
+        Align(
+  alignment: Alignment.center,
+  child: scan ,
+),
             
           ],
         );
